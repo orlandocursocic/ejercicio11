@@ -8,7 +8,7 @@ namespace ejercicio11Test
     public class CocinaUtilTest
     {
         private Alimento alimento1;
-        private CocinaUtil sut;
+        private ICocinaUtil sut;
 
         [TestInitialize]
         public void InitTest()

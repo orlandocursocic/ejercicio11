@@ -10,7 +10,12 @@ namespace ejercicio11
     { 
         public ICocinaUtil cocinaUtil { get; set; }
 
-        public Plato CocinarAlimento(Alimento alimento1, Alimento alimento2)
+        public Turbomix(ICocinaUtil cocinaUtil)
+        {
+            this.cocinaUtil = cocinaUtil;
+        }
+
+        public Plato CocinarPlato(Alimento alimento1, Alimento alimento2)
         {
             cocinaUtil.PesarAlimento(alimento1);
             cocinaUtil.CalentarAlimento(alimento1);

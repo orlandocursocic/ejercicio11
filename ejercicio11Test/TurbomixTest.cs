@@ -16,15 +16,13 @@ namespace ejercicio11Test
         {
             alimento1 = new Alimento(200.0);
             alimento2 = new Alimento(200.0);
-            sut = new Turbomix();
+            sut = new Turbomix(new CocinaDeJuguete());
         }
 
         [TestMethod]
         public void CocinarAlimentoTest()
         {
-            sut.cocinaUtil = new CocinaDeJuguete();
-
-            sut.CocinarAlimento(alimento1, alimento2);
+            sut.CocinarPlato(alimento1, alimento2);
         }
     }
 
