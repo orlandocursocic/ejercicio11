@@ -33,6 +33,16 @@ namespace ejercicio11Test
 
             Assert.AreNotEqual(null, plato);
         }
+
+        [TestMethod]
+        public void CocinarRecetaPesoMenorTest()
+        {
+            alimento1.peso = 0.0;
+
+            Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
+
+            Assert.IsNull(plato);
+        }
     }
 
     public class CocinaDeJuguete : ICocinaUtil
