@@ -27,16 +27,17 @@ namespace ejercicio11
         {
             Plato plato;
 
-            if(isCookable(alimento1, alimento2, receta))
+            if (isCookable(alimento1, alimento2, receta))
             {
-				cocinaUtil.CalentarAlimento(alimento1);
-				cocinaUtil.CalentarAlimento(alimento2);
+                cocinaUtil.CalentarAlimento(alimento1);
+                cocinaUtil.CalentarAlimento(alimento2);
 
-				alimento1.peso = receta.alimento1.peso;
-				alimento1.peso = receta.alimento1.peso;
+                alimento1.peso = receta.alimento1.peso;
+                alimento1.peso = receta.alimento1.peso;
 
-				plato = new Plato(alimento1, alimento2);
-            } else
+                plato = new Plato(alimento1, alimento2);
+            }
+            else
             {
                 plato = null;
             }
@@ -44,15 +45,28 @@ namespace ejercicio11
             return plato;
         }
 
-        private bool isCookable (Alimento alimento1, Alimento alimento2, Receta receta){
+        /// <summary>
+        /// Comprueba si los alimentos pueden ser cocinados siguiendo la receta tal y como
+        /// indican los requisitos actuales (12/07/2017)
+        /// </summary>
+        /// <param name="alimento1"> Alimento a cocinar</param>
+        /// <param name="alimento2">Alimento a cocinar</param>
+        /// <param name="receta">Receta a seguir</param>
+        /// <returns>true si se puede cocinar o false en caso contrario</returns>
+        private bool isCookable(Alimento alimento1, Alimento alimento2, Receta receta)
+        {
             bool bCooked = false;
 
-            if (alimento1.isCaliente() || alimento2.isCaliente())
+            if (alimento1 == null || alimento2 == null || receta == null)
             {
                 bCooked = false;
             }
-            else if (alimento1.nombre.Equals(receta.alimento1.nombre) ||
-                     alimento2.nombre.Equals(receta.alimento2.nombre))
+            else if (!alimento1.nombre.Equals(receta.alimento1.nombre) ||
+                 !alimento2.nombre.Equals(receta.alimento2.nombre))
+            {
+                bCooked = false;
+            }
+            else if (alimento1.isCaliente() || alimento2.isCaliente())
             {
                 bCooked = false;
             }

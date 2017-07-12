@@ -23,7 +23,8 @@ namespace ejercicio11Test
             alimentoReceta2 = new Alimento("Queso", 199.9);
             receta = new Receta(alimentoReceta1, alimentoReceta2);
 
-            sut = new Turbomix(new CocinaDeJuguete());
+            // Se ha sustituido la cocina de juguete (Dummie) por CocinaUtil
+            sut = new Turbomix(new CocinaUtil());
         }
 
         [TestMethod]
@@ -35,6 +36,26 @@ namespace ejercicio11Test
         }
 
         [TestMethod]
+        public void CocinarRecetaNombreAlimentoErroneoTest()
+        {
+            alimento1.nombre = "UnoQueNoVale";
+
+            Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
+
+            Assert.IsNull(plato);
+        }
+
+        [TestMethod]
+        public void CocinarRecetaAlimentoCalienteTest()
+        {
+            alimento1.caliente = true;
+
+            Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
+
+            Assert.IsNull(plato);
+        }
+
+        [TestMethod]
         public void CocinarRecetaPesoMenorTest()
         {
             alimento1.peso = 0.0;
@@ -43,6 +64,7 @@ namespace ejercicio11Test
 
             Assert.IsNull(plato);
         }
+
     }
 
     public class CocinaDeJuguete : ICocinaUtil
