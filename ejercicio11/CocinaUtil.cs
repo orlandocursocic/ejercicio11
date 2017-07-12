@@ -17,7 +17,7 @@ namespace ejercicio11
 
         public void CalentarAlimento(Alimento alimento)
         {
-            //Not Implemented
+            alimento.caliente = true;
             llamado = true;
         }
 

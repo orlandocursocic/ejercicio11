@@ -45,6 +45,7 @@
     <Compile Include="ICocinaUtil.cs" />
     <Compile Include="Plato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receta.cs" />
     <Compile Include="Turbomix.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

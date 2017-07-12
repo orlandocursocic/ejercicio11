@@ -10,10 +10,24 @@ namespace ejercicio11
     {
         public double peso { get; set; }
         public string nombre { get; set; }
+        public bool caliente;
 
         public Alimento(double peso)
         {
             this.peso = peso;
+            this.caliente = false;
+        }
+
+        public Alimento(string nombre, double peso)
+        {
+            this.nombre = nombre;
+            this.peso = peso;
+            this.caliente = false;
+        }
+
+        public bool isCaliente()
+        {
+            return this.caliente;
         }
 
         public override bool Equals(object obj)

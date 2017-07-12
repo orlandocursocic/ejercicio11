@@ -15,14 +15,44 @@ namespace ejercicio11
             this.cocinaUtil = cocinaUtil;
         }
 
-        public Plato CocinarPlato(Alimento alimento1, Alimento alimento2)
+        /// <summary>
+        /// Retorna null si no se puede realizar el plato, ya sea porque no tiene los alimentos
+        /// necesarios o porque los recibe calientes
+        /// </summary>
+        /// <param name="alimento1"> Alimento 1 a cocinar</param>
+        /// <param name="alimento2"> Alimento 2 a cocinar</param>
+        /// <param name="receta"> Receta a seguir</param>
+        /// <returns>El plato si se pudo cocinar o null si no se pudo</returns>
+        public Plato CocinarReceta(Alimento alimento1, Alimento alimento2, Receta receta)
         {
-            cocinaUtil.PesarAlimento(alimento1);
+            Plato plato;
+
+            if (alimento1.isCaliente() || alimento2.isCaliente())
+            {
+                plato = null;
+            }
+
+            if (!alimento1.nombre.Equals(receta.alimento1.nombre) ||
+                !alimento2.nombre.Equals(receta.alimento2.nombre))
+            {
+                plato = null;
+            }
+
+            if (cocinaUtil.PesarAlimento(alimento1) < receta.alimento1.peso ||
+                cocinaUtil.PesarAlimento(alimento2) < receta.alimento2.peso)
+            {
+                plato = null;
+            }
+
             cocinaUtil.CalentarAlimento(alimento1);
-            cocinaUtil.PesarAlimento(alimento2);
             cocinaUtil.CalentarAlimento(alimento2);
 
-            return new Plato(alimento1, alimento2);
+            alimento1.peso = receta.alimento1.peso;
+            alimento1.peso = receta.alimento1.peso;
+
+            plato = new Plato(alimento1, alimento2);
+
+            return plato;
         }
     }
 }
