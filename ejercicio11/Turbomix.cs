@@ -55,31 +55,31 @@ namespace ejercicio11
         /// <returns>true si se puede cocinar o false en caso contrario</returns>
         private bool isCookable(Alimento alimento1, Alimento alimento2, Receta receta)
         {
-            bool bCooked = false;
+            bool bCookable = false;
 
             if (alimento1 == null || alimento2 == null || receta == null)
             {
-                bCooked = false;
+                bCookable = false;
             }
             else if (!alimento1.nombre.Equals(receta.alimento1.nombre) ||
                  !alimento2.nombre.Equals(receta.alimento2.nombre))
             {
-                bCooked = false;
+                bCookable = false;
             }
             else if (alimento1.isCaliente() || alimento2.isCaliente())
             {
-                bCooked = false;
+                bCookable = false;
             }
             else if (cocinaUtil.PesarAlimento(alimento1) < receta.alimento1.peso ||
                      cocinaUtil.PesarAlimento(alimento2) < receta.alimento2.peso)
             {
-                bCooked = false;
+                bCookable = false;
             }
             else
             {
-                bCooked = true;
+                bCookable = true;
             }
-            return bCooked;
+            return bCookable;
         }
     }
 }
