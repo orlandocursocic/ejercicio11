@@ -27,33 +27,45 @@ namespace ejercicio11
         {
             Plato plato;
 
-            if (alimento1.isCaliente() || alimento2.isCaliente())
+            if(isCookable(alimento1, alimento2, receta))
             {
-                plato = null;
+				cocinaUtil.CalentarAlimento(alimento1);
+				cocinaUtil.CalentarAlimento(alimento2);
 
-                if (!alimento1.nombre.Equals(receta.alimento1.nombre) ||
-                !alimento2.nombre.Equals(receta.alimento2.nombre))
-                {
-                    plato = null;
+				alimento1.peso = receta.alimento1.peso;
+				alimento1.peso = receta.alimento1.peso;
 
-                    if (cocinaUtil.PesarAlimento(alimento1) < receta.alimento1.peso ||
-                    cocinaUtil.PesarAlimento(alimento2) < receta.alimento2.peso)
-                    {
-                        plato = null;
-                    }
-                }
+				plato = new Plato(alimento1, alimento2);
             } else
             {
-                cocinaUtil.CalentarAlimento(alimento1);
-                cocinaUtil.CalentarAlimento(alimento2);
-
-                alimento1.peso = receta.alimento1.peso;
-                alimento1.peso = receta.alimento1.peso;
-
-                plato = new Plato(alimento1, alimento2);
+                plato = null;
             }
 
             return plato;
+        }
+
+        private bool isCookable (Alimento alimento1, Alimento alimento2, Receta receta){
+            bool bCooked = false;
+
+            if (alimento1.isCaliente() || alimento2.isCaliente())
+            {
+                bCooked = false;
+            }
+            else if (alimento1.nombre.Equals(receta.alimento1.nombre) ||
+                     alimento2.nombre.Equals(receta.alimento2.nombre))
+            {
+                bCooked = false;
+            }
+            else if (cocinaUtil.PesarAlimento(alimento1) < receta.alimento1.peso ||
+                     cocinaUtil.PesarAlimento(alimento2) < receta.alimento2.peso)
+            {
+                bCooked = false;
+            }
+            else
+            {
+                bCooked = true;
+            }
+            return bCooked;
         }
     }
 }
