@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ejercicio11
 {
-    public class Turbomix
+    public class Turbomix : ITurbomix
     {
         public ICocinaUtil cocinaUtil { get; set; }
 
@@ -29,11 +29,11 @@ namespace ejercicio11
 
             if (isCookable(alimento1, alimento2, receta))
             {
+                alimento1.peso = receta.alimento1.peso;
+                alimento1.peso = receta.alimento1.peso;
+
                 cocinaUtil.CalentarAlimento(alimento1);
                 cocinaUtil.CalentarAlimento(alimento2);
-
-                alimento1.peso = receta.alimento1.peso;
-                alimento1.peso = receta.alimento1.peso;
 
                 plato = new Plato(alimento1, alimento2);
             }
@@ -55,7 +55,7 @@ namespace ejercicio11
         /// <returns>true si se puede cocinar o false en caso contrario</returns>
         private bool isCookable(Alimento alimento1, Alimento alimento2, Receta receta)
         {
-            bool bCookable = false;
+            bool bCookable = true;
 
             if (alimento1 == null || alimento2 == null || receta == null)
             {
@@ -75,10 +75,7 @@ namespace ejercicio11
             {
                 bCookable = false;
             }
-            else
-            {
-                bCookable = true;
-            }
+
             return bCookable;
         }
     }

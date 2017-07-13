@@ -50,7 +50,7 @@ namespace ejercicio11
             else
             {
                 if (!((Alimento)obj).nombre.Equals(this.nombre))
-                {
+                { 
                     return false;
                 }
             }

@@ -43,6 +43,7 @@
     <Compile Include="Alimento.cs" />
     <Compile Include="CocinaUtil.cs" />
     <Compile Include="ICocinaUtil.cs" />
+    <Compile Include="ITurbomix.cs" />
     <Compile Include="Plato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
