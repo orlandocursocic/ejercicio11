@@ -9,10 +9,17 @@ namespace ejercicio11
     public class Turbomix : ITurbomix
     {
         public ICocinaUtil cocinaUtil { get; set; }
+        public IRecetaRepository recetaRepository { get; set; }
 
         public Turbomix(ICocinaUtil cocinaUtil)
         {
             this.cocinaUtil = cocinaUtil;
+        }
+
+        public Turbomix(ICocinaUtil cocinaUtil, IRecetaRepository recetaRepository)
+        {
+            this.cocinaUtil = cocinaUtil;
+            this.recetaRepository = recetaRepository;
         }
 
         /// <summary>
@@ -77,6 +84,11 @@ namespace ejercicio11
             }
 
             return bCookable;
+        }
+
+        public Receta addRecetaRepositorio(Receta receta)
+        {
+            return this.recetaRepository.addReceta(receta);
         }
     }
 }

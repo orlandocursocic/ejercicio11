@@ -12,7 +12,9 @@ namespace ejercicio11Test
         private Alimento alimento2;
         private Alimento alimentoReceta1;
         private Alimento alimentoReceta2;
+        private Alimento alimentoReceta3;
         private Receta receta;
+        private Receta receta2;
         private Turbomix sut;
 
         [TestInitialize]
@@ -22,7 +24,9 @@ namespace ejercicio11Test
             alimento2 = new Alimento("Queso", 200.0);
             alimentoReceta1 = new Alimento("Curry", 155.5);
             alimentoReceta2 = new Alimento("Queso", 199.9);
+            alimentoReceta3 = new Alimento("Chocolate", 2000.99);
             receta = new Receta(alimentoReceta1, alimentoReceta2);
+            receta2 = new Receta(alimentoReceta2, alimentoReceta3);
 
             // Se ha sustituido la cocina de juguete (Dummie) por CocinaUtil
             sut = new Turbomix(new CocinaUtil());
@@ -88,6 +92,25 @@ namespace ejercicio11Test
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
 
             Assert.IsNull(plato);
+        }
+
+        [TestMethod]
+        public void AddRecetaTest()
+        {
+            var mockRecetaRepository = new Mock<IRecetaRepository>();
+            IRecetaRepository recetaRepository = mockRecetaRepository.Object;
+
+            mockRecetaRepository.Setup(Turbomix => Turbomix.addReceta(It.IsAny<Receta>()))
+                .Returns((Receta r) => r);
+            mockRecetaRepository.Setup(Turbomix => Turbomix.addReceta(It.IsAny<Receta>()))
+                .Returns((Receta r) => r);
+
+            sut = new Turbomix(new CocinaUtil(), recetaRepository);
+
+            sut.addRecetaRepositorio(receta);
+            sut.addRecetaRepositorio(receta2);
+
+            mockRecetaRepository.Verify(Turbomix => Turbomix.addReceta(It.IsAny<Receta>()), Times.AtLeast(2));
         }
 
     }
