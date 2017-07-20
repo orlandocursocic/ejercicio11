@@ -41,14 +41,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alimento.cs" />
-    <Compile Include="CocinaUtil.cs" />
-    <Compile Include="ICocinaUtil.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="CategoriaNoExisteException.cs" />
+    <Compile Include="CategoriaRepository.cs" />
+    <Compile Include="CategoriaService.cs" />
+    <Compile Include="CategoriaYaExisteException.cs" />
+    <Compile Include="CocinaUtilService.cs" />
+    <Compile Include="ICategoriaRepository.cs" />
+    <Compile Include="ICategoriaService.cs" />
+    <Compile Include="ICocinaUtilService.cs" />
     <Compile Include="IRecetaRepository.cs" />
     <Compile Include="ITurbomix.cs" />
     <Compile Include="Plato.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Receta.cs" />
+    <Compile Include="RecetaNoExisteException.cs" />
     <Compile Include="RecetaRepository.cs" />
+    <Compile Include="IRecetaService.cs" />
+    <Compile Include="RecetaService.cs" />
+    <Compile Include="RecetaYaExisteException.cs" />
     <Compile Include="Turbomix.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

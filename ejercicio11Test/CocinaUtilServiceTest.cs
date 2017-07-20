@@ -5,16 +5,16 @@ using ejercicio11;
 namespace ejercicio11Test
 {
     [TestClass]
-    public class CocinaUtilTest
+    public class CocinaUtilServiceTest
     {
         private Alimento alimento1;
-        private ICocinaUtil sut;
+        private ICocinaUtilService sut;
 
         [TestInitialize]
         public void InitTest()
         {
             alimento1 = new Alimento(500.0);
-            sut = new CocinaUtil();
+            sut = new CocinaUtilService();
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace ejercicio11Test
         {
             sut.CalentarAlimento(alimento1);
 
-            Assert.IsTrue(CocinaUtil.IsLlamado());
+            Assert.IsTrue(CocinaUtilService.IsLlamado());
         }
     }
 }

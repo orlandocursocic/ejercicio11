@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ejercicio11
 {
-    public class CocinaUtil : ICocinaUtil
+    public class CocinaUtilService : ICocinaUtilService
     {
         private static bool llamado = false;
 

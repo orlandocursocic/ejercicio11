@@ -1,6 +1,6 @@
 ﻿namespace ejercicio11
 {
-    public interface ICocinaUtil
+    public interface ICocinaUtilService
     {
         void CalentarAlimento(Alimento alimento);
         double PesarAlimento(Alimento alimento);

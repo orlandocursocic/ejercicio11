@@ -8,18 +8,13 @@ namespace ejercicio11
 {
     public class Turbomix : ITurbomix
     {
-        public ICocinaUtil cocinaUtil { get; set; }
-        public IRecetaRepository recetaRepository { get; set; }
+        public ICocinaUtilService cocinaUtilService { get; set; }
+        public IRecetaService recetaService { get; set; }
 
-        public Turbomix(ICocinaUtil cocinaUtil)
+        public Turbomix(ICocinaUtilService cocinaUtil, IRecetaService recetaService)
         {
-            this.cocinaUtil = cocinaUtil;
-        }
-
-        public Turbomix(ICocinaUtil cocinaUtil, IRecetaRepository recetaRepository)
-        {
-            this.cocinaUtil = cocinaUtil;
-            this.recetaRepository = recetaRepository;
+            this.cocinaUtilService = cocinaUtil;
+            this.recetaService = recetaService;
         }
 
         /// <summary>
@@ -39,8 +34,8 @@ namespace ejercicio11
                 alimento1.peso = receta.alimento1.peso;
                 alimento1.peso = receta.alimento1.peso;
 
-                cocinaUtil.CalentarAlimento(alimento1);
-                cocinaUtil.CalentarAlimento(alimento2);
+                cocinaUtilService.CalentarAlimento(alimento1);
+                cocinaUtilService.CalentarAlimento(alimento2);
 
                 plato = new Plato(alimento1, alimento2);
             }
@@ -77,8 +72,8 @@ namespace ejercicio11
             {
                 bCookable = false;
             }
-            else if (cocinaUtil.PesarAlimento(alimento1) < receta.alimento1.peso ||
-                     cocinaUtil.PesarAlimento(alimento2) < receta.alimento2.peso)
+            else if (cocinaUtilService.PesarAlimento(alimento1) < receta.alimento1.peso ||
+                     cocinaUtilService.PesarAlimento(alimento2) < receta.alimento2.peso)
             {
                 bCookable = false;
             }
@@ -86,9 +81,9 @@ namespace ejercicio11
             return bCookable;
         }
 
-        public Receta addRecetaRepositorio(Receta receta)
+        public void addRecetaRepositorio(Receta receta)
         {
-            return this.recetaRepository.addReceta(receta);
+            this.recetaService.addReceta(receta);
         }
     }
 }
