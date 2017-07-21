@@ -54,6 +54,9 @@ namespace ejercicio11Test
             mockCocinautilService.Setup(cocina => cocina.CalentarAlimento(It.IsAny<Alimento>()))
                 .Callback((Alimento p1) => p1.caliente = true);
 
+            mockRecetaService.Setup(recetaSetup => recetaSetup.receta(It.IsAny<String>()))
+                .Returns(receta);
+
             sut = new Turbomix(cocinaUtilService, recetaService);
 
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);

@@ -57,8 +57,8 @@ namespace ejercicio11Test
         {
             sut.recetaService.categoriaService.addCategoria(categoria1);
             sut.recetaService.categoriaService.addCategoria(categoria2);
-            sut.recetaService.addReceta(receta);
-            sut.recetaService.addReceta(receta2);
+            sut.addRecetaRepositorio(receta);
+            sut.addRecetaRepositorio(receta2);
 
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
 
@@ -68,6 +68,11 @@ namespace ejercicio11Test
         [TestMethod]
         public void CocinarRecetaNombreAlimentoErroneoTest()
         {
+            sut.recetaService.categoriaService.addCategoria(categoria1);
+            sut.recetaService.categoriaService.addCategoria(categoria2);
+            sut.addRecetaRepositorio(receta);
+            sut.addRecetaRepositorio(receta2);
+
             alimento1.nombre = "UnoQueNoVale";
 
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
@@ -78,6 +83,11 @@ namespace ejercicio11Test
         [TestMethod]
         public void CocinarRecetaAlimentoCalienteTest()
         {
+            sut.recetaService.categoriaService.addCategoria(categoria1);
+            sut.recetaService.categoriaService.addCategoria(categoria2);
+            sut.addRecetaRepositorio(receta);
+            sut.addRecetaRepositorio(receta2);
+
             alimento1.caliente = true;
 
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
@@ -88,6 +98,11 @@ namespace ejercicio11Test
         [TestMethod]
         public void CocinarRecetaPesoMenorTest()
         {
+            sut.recetaService.categoriaService.addCategoria(categoria1);
+            sut.recetaService.categoriaService.addCategoria(categoria2);
+            sut.addRecetaRepositorio(receta);
+            sut.addRecetaRepositorio(receta2);
+
             alimento1.peso = 0.0;
 
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);

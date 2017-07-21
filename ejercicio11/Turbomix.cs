@@ -29,7 +29,7 @@ namespace ejercicio11
         {
             Plato plato;
 
-            if (isCookable(alimento1, alimento2, receta))
+            if (existsReceta(receta.nombre) && isCookable(alimento1, alimento2, receta))
             {
                 alimento1.peso = receta.alimento1.peso;
                 alimento1.peso = receta.alimento1.peso;
@@ -45,6 +45,11 @@ namespace ejercicio11
             }
 
             return plato;
+        }
+
+        public void addRecetaRepositorio(Receta receta)
+        {
+            this.recetaService.addReceta(receta);
         }
 
         /// <summary>
@@ -63,10 +68,6 @@ namespace ejercicio11
             {
                 bCookable = false;
             }
-            //else if(recetaService.receta(receta.nombre) == null)
-            //{
-            //    bCookable = false;
-            //}
             else if (!alimento1.nombre.Equals(receta.alimento1.nombre) ||
                  !alimento2.nombre.Equals(receta.alimento2.nombre))
             {
@@ -85,9 +86,15 @@ namespace ejercicio11
             return bCookable;
         }
 
-        public void addRecetaRepositorio(Receta receta)
+        private bool existsReceta(string nombreReceta)
         {
-            this.recetaService.addReceta(receta);
+            bool exists = false;
+
+            if (recetaService.receta(nombreReceta) != null)
+            {
+                exists = true;
+            }
+            return exists;
         }
     }
 }
