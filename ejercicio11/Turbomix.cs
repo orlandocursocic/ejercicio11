@@ -63,6 +63,10 @@ namespace ejercicio11
             {
                 bCookable = false;
             }
+            //else if(recetaService.receta(receta.nombre) == null)
+            //{
+            //    bCookable = false;
+            //}
             else if (!alimento1.nombre.Equals(receta.alimento1.nombre) ||
                  !alimento2.nombre.Equals(receta.alimento2.nombre))
             {

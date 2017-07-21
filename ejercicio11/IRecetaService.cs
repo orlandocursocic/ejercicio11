@@ -9,6 +9,7 @@ namespace ejercicio11
     public interface IRecetaService
     {
         IRecetaRepository recetaRepository { get; set; }
+        ICategoriaService categoriaService { get; set; }
 
         void updateReceta(Receta receta);
         void addReceta(Receta receta);

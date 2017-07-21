@@ -18,6 +18,8 @@ namespace ejercicio11Test
         private Alimento alimentoReceta3;
         private string nombreReceta1;
         private string nombreReceta2;
+        private Categoria categoria1;
+        private Categoria categoria2;
         private Receta receta;
         private Receta receta2;
 
@@ -29,7 +31,7 @@ namespace ejercicio11Test
             container = new UnityContainer();
             container.RegisterType<ITurbomix, Turbomix>();
             container.RegisterType<ICocinaUtilService, CocinaUtilService>();
-            container.RegisterType<IRecetaService, ejercicio11.RecetaService>();
+            container.RegisterType<IRecetaService, RecetaService>();
             container.RegisterType<IRecetaRepository, RecetaRepository>();
             container.RegisterType<ICategoriaService, CategoriaService>();
             container.RegisterType<ICategoriaRepository, CategoriaRepository>();
@@ -39,10 +41,13 @@ namespace ejercicio11Test
             alimentoReceta1 = new Alimento("Curry", 155.5);
             alimentoReceta2 = new Alimento("Queso", 199.9);
             alimentoReceta3 = new Alimento("Chocolate", 2000.99);
+            categoria1 = new Categoria("Primero", "Se trata de un primer plato");
+            categoria2 = new Categoria("Segundo", "Se trata de un segundo plato");
             nombreReceta1 = "nombreReceta1";
             nombreReceta2= "nombreReceta2";
-            receta = new Receta(nombreReceta1, alimentoReceta1, alimentoReceta2);
-            receta2 = new Receta(nombreReceta2, alimentoReceta2, alimentoReceta3);
+
+            receta = new Receta(nombreReceta1, alimentoReceta1, alimentoReceta2, categoria1);
+            receta2 = new Receta(nombreReceta2, alimentoReceta2, alimentoReceta3, categoria2);
 
             sut = container.Resolve<ITurbomix>();
         }
@@ -50,6 +55,11 @@ namespace ejercicio11Test
         [TestMethod]
         public void CocinarRecetaTest()
         {
+            sut.recetaService.categoriaService.addCategoria(categoria1);
+            sut.recetaService.categoriaService.addCategoria(categoria2);
+            sut.recetaService.addReceta(receta);
+            sut.recetaService.addReceta(receta2);
+
             Plato plato = sut.CocinarReceta(alimento1, alimento2, receta);
 
             Assert.AreNotEqual(null, plato);

@@ -77,6 +77,7 @@
     <Compile Include="TurbomixIntegrationTest.cs" />
     <Compile Include="TurbomixText.cs" />
     <Compile Include="RecetaServiceTest.cs" />
+    <Compile Include="CategoriaServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ejercicio11\ejercicio11.csproj">

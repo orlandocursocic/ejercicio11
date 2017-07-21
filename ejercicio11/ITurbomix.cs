@@ -3,6 +3,7 @@
     public interface ITurbomix
     {
         ICocinaUtilService cocinaUtilService { get; set; }
+        IRecetaService recetaService { get; set; }
 
         Plato CocinarReceta(Alimento alimento1, Alimento alimento2, Receta receta);
 
