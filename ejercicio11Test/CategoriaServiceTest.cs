@@ -41,7 +41,7 @@ namespace ejercicio11Test
 
         [TestMethod]
         [ExpectedException(typeof(CategoriaYaExisteException),
-            "La categoria de la receta no existe")]
+            "La categoria a anyadir ya existe")]
         public void AddCategoriaYaExisteMockTest()
         {
             var mockCategoriaRepository = new Mock<ICategoriaRepository>();

@@ -41,12 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alimento.cs" />
+    <Compile Include="Aviso.cs" />
+    <Compile Include="AvisoNoExisteException.cs" />
+    <Compile Include="AvisoRepository.cs" />
+    <Compile Include="AvisoService.cs" />
+    <Compile Include="AvisoYaExisteException.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaNoExisteException.cs" />
     <Compile Include="CategoriaRepository.cs" />
     <Compile Include="CategoriaService.cs" />
     <Compile Include="CategoriaYaExisteException.cs" />
     <Compile Include="CocinaUtilService.cs" />
+    <Compile Include="CriticidadNoValidaException.cs" />
+    <Compile Include="IAvisoRepository.cs" />
+    <Compile Include="IAvisoService.cs" />
     <Compile Include="ICategoriaRepository.cs" />
     <Compile Include="ICategoriaService.cs" />
     <Compile Include="ICocinaUtilService.cs" />

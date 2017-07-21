@@ -35,7 +35,7 @@ namespace ejercicio11
 
             if (categoriaAux != null)
             {
-                // TODO implementar correctamente el update de recetaRepository
+                // TODO implementar correctamente el update de avisoRepository
                 categoriaRepository.updateCategoria(categoria);
             }
             else
